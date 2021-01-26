@@ -1,12 +1,13 @@
-import './App.css';
-import Navbar from '../src/components/navbar/'
-import bootstrap from 'bootstrap'
+import './App.css'
+import NavbarComponent from '../src/components/NavBar/index.jsx'
+import ItemListContainer from './containers/ItemListContainer'
 
 const App = () => {
   
   return (
     <>
-      <Navbar />
+      <NavbarComponent />
+      <ItemListContainer greeting={`ESTILO Y UTILIDAD EN 3 DIMENSIONES`}/>
     </>
   );
 }

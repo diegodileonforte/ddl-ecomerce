@@ -1,40 +1,31 @@
+import './styles.css'
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import logo from "../../images/logonav.png"
+import CartWidgetComponent from '../CartWidget/CartWidget'
 
-const Navbar = () => {
+const NavbarComponent = () => {
     return (
         <>
-            <nav className="navbar navbar-expand-md navbar-dark bg-danger">
-                <div className="container">
-                    <a className="navbar-brand" href="#">3 DIM</a>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li className="nav-item">
-                                <a className="nav-link" aria-current="page" href="#">NOSOTROS</a>
-                            </li>
-                            <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    PRODUCTOS
-                                </a>
-                                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a className="dropdown-item" href="#">DECO</a></li>
-                                    <li><hr className="dropdown-divider" /></li>
-                                    <li><a className="dropdown-item" href="#">GADGETS</a></li>
-                                    
-                                </ul>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="#">CONTACTO</a>
-                            </li>
-                        </ul>
-                    </div>
+            <Navbar bg="danger" variant="dark" expand="sm">
+                <div className='container d-flex justify-content-between align-items-center'>
+                    <Navbar.Brand className="d-flex justify-content-between align-items-center" href="#home"><img src={logo} alt="logo" width="50" height="50" /><h1 id="brand-name">3 DIM</h1></Navbar.Brand>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="mr-auto">
+                            <Nav.Link href="#link">NOSOTROS</Nav.Link>
+                            <NavDropdown title="PRODUCTOS" id="basic-nav-dropdown">
+                                <NavDropdown.Item href="#action/3.1" >DEC0</NavDropdown.Item>
+                                <NavDropdown.Item href="#action/3.2">GADGETS</NavDropdown.Item>
+                            </NavDropdown>
+                            <Nav.Link href="#link">CONTACTO</Nav.Link>
+                        </Nav>
+                    </Navbar.Collapse>
+                    <CartWidgetComponent />
                 </div>
-            </nav>
-
+            </Navbar>
         </>
     )
 }
 
-export default Navbar
+export default NavbarComponent
