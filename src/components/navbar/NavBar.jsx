@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import logo from "../../images/logonav.png"
 import CartWidgetComponent from '../CartWidget/CartWidget'
 
-const NavbarComponent = () => {
+const NavBarComponent = () => {
     return (
         <>
             <Navbar bg="danger" variant="dark" expand="sm">
@@ -28,4 +28,4 @@ const NavbarComponent = () => {
     )
 }
 
-export default NavbarComponent
+export default NavBarComponent
