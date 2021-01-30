@@ -6,6 +6,11 @@ import ItemCountComponent from '../components/ItemCount/ItemCount.jsx'
 
 
 const ItemListContainer = ({ greeting }) => {
+    
+    const handleAdd = (itemAmount) =>{
+        console.log(`Se agregarán ${itemAmount} producto/s al carrito.`)
+    }
+
     return (
         <>
             <Container>
@@ -13,7 +18,7 @@ const ItemListContainer = ({ greeting }) => {
                     <Col className='container d-flex justify-content-center'><h1 className='fw-bold p-2 text-center' id="main-title">{greeting}</h1></Col>
                 </Row>
                 <Row>
-                    <Col><ItemCountComponent initial={1} stock={5} /></Col>
+                    <Col><ItemCountComponent initial={1} stock={5} onAdd={handleAdd} /></Col>
                 </Row>
             </Container>
         </>
