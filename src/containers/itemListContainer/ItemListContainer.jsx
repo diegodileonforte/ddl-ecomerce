@@ -3,9 +3,8 @@ import React, { useState, useEffect } from 'react';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import ItemCountComponent from '../components/ItemCount/ItemCount.jsx'
-import productList from '../../src/mocks/productList'
-import ItemList from '../components/ItemList/ItemList';
+import productList from '../../mocks/productList'
+import ItemList from '../../components/ItemList/ItemList';
 
 
 const ItemListContainer = ({ greeting }) => {
@@ -20,9 +19,7 @@ const ItemListContainer = ({ greeting }) => {
         myPromise.then((result) => setProducts(result))
     }, []);
 
-    const handleAdd = (itemAmount) => {
-        console.log(`Se agregarán ${itemAmount} producto/s al carrito.`)
-    }
+
 
     return (
         <>
@@ -35,11 +32,6 @@ const ItemListContainer = ({ greeting }) => {
                 <Row>
                     <Col>
                         <ItemList products={products} />
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <ItemCountComponent initial={1} stock={5} onAdd={handleAdd} />
                     </Col>
                 </Row>
             </Container>

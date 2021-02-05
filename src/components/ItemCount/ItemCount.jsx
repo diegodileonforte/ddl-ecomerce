@@ -21,7 +21,7 @@ const ItemCountComponent = ({ initial, stock, onAdd }) => {
 
     if (initial === 0) {
 
-        return <div className='container d-flex justify-content-center text-align-center' ><h1>Producto sin stock</h1></div>
+        return <div className='container d-flex justify-content-center text-align-center' ><p>Producto sin stock</p></div>
     }
 
     else {
@@ -31,7 +31,7 @@ const ItemCountComponent = ({ initial, stock, onAdd }) => {
                 <div className='d-flex justify-content-around text-align-center' >
                     <Button variant="outline-danger" size="sm" onClick={() => restar()}>-</Button>
 
-                    <h1 className="text-align-center">{count}</h1>
+                    <p className="text-align-center">{count}</p>
 
                     <Button variant="outline-primary" size='sm' onClick={() => sumar()}>+</Button>
 

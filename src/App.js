@@ -1,6 +1,7 @@
 import './App.css'
 import NavBarComponent from '../src/components/NavBar/NavBar.jsx'
-import ItemListContainer from './containers/ItemListContainer'
+import ItemListContainer from './containers/itemListContainer/ItemListContainer'
+import ItemDetailContainer from './containers/itemDetailContainer/ItemDetailContainer'
 
 const App = () => {
 
@@ -8,7 +9,7 @@ const App = () => {
     <>
       <NavBarComponent />
       <ItemListContainer greeting={`ESTILO Y UTILIDAD EN 3 DIMENSIONES`} />
-
+      <ItemDetailContainer />
     </>
   );
 }
