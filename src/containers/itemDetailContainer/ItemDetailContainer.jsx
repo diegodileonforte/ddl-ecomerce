@@ -6,7 +6,7 @@ import ItemDetail from '../../components/ItemDetail/ItemDetail';
 
 const ItemDetailContainer = () => {
 
-    const [productDetail, setProductDetail] = useState([])
+    const [productDetail, setProductDetail] = useState(null)
 
     useEffect(() => {
         const getItem = new Promise((resolve, reject) => {
@@ -18,7 +18,7 @@ const ItemDetailContainer = () => {
 
     return (
         <Container>
-            <ItemDetail productDetail={productDetail} />
+            {productDetail && <ItemDetail productDetail={productDetail} />}
         </Container>
     )
 }
