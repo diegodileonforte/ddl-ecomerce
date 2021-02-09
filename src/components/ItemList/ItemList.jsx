@@ -1,17 +1,16 @@
 import React from 'react'
 import Item from '../Item/Item'
-import CardGroup from 'react-bootstrap/CardGroup'
+
 
 const ItemList = ({ products }) => {
     return (
 
-        <CardGroup>
-
+        <div className='container d-flex justify-content-around flex-wrap'>
             {products.map((product) => {
                 return <Item key={product.id} product={product} />
             })}
+        </div>
 
-        </CardGroup>
     )
 }
 

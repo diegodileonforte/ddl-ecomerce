@@ -1,3 +1,11 @@
+.link{
+    text-decoration: none;
+}
+
+.dropdown-item{
+    display: block;
+}
+
 #brand-name{
     margin-left: 10px;
 }
