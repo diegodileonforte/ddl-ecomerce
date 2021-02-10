@@ -15,7 +15,7 @@ const ItemDetailContainer = () => {
     useEffect(() => {
         setloading(true);
         const getItem = new Promise((resolve, reject) => {
-            setTimeout(() => resolve(productList.filter(product => product.id === id)), 1000)
+            setTimeout(() => resolve(productList.find(product => product.id.toString() === id)), 1000)
         });
 
         getItem.then((result) => {
@@ -25,13 +25,13 @@ const ItemDetailContainer = () => {
     }, [id]);
 
     if (loading) {
-        return <Container>
+        return <Container className='d-flex justify-content-center'>
             <img src='../../images/loading.svg' alt=""/>
         </Container>
     }
 
     return (
-        <Container>
+        <Container className='d-flex justify-content-center'>
             {productDetail && <ItemDetail productDetail={productDetail} />}
         </Container>
     )

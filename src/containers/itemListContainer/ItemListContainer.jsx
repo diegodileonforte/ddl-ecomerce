@@ -18,18 +18,32 @@ const ItemListContainer = ({ greeting }) => {
     useEffect(() => {
         setloading(true);
         const myPromise = new Promise((resolve, reject) => {
-            setTimeout(() => resolve(productList.filter(product => product.categoryId === categoryId)), 1000)
+            setTimeout(() => resolve(productList), 1000)
         });
 
         myPromise.then((result) => {
-            setProducts(result)
+
+            let categoryProducts
+
+            if (categoryId !== undefined) {
+                categoryProducts = result.filter(product => product.categoryId === categoryId)
+            } else {
+                categoryProducts = result
+            }
+
+            setProducts(categoryProducts)
             setloading(false)
         })
     }, [categoryId]);
 
     if (loading) {
         return <Container>
-            <img className='loading-img' src='../../images/loading.svg' alt="" />
+            <Row>
+                <Col>
+                    <img className='loading-img' src='../../images/loading.svg' alt="" />
+                </Col>
+            </Row>
+
         </Container>
     }
 
