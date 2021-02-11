@@ -1,9 +1,9 @@
 import React from 'react'
-import { useState, useEffect } from 'react';
-import { Container } from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
-import ItemDetail from '../../components/ItemDetail/ItemDetail';
-import productList from '../../mocks/productList';
+import { useState, useEffect } from 'react'
+import { Container } from 'react-bootstrap'
+import { useParams } from 'react-router-dom'
+import ItemDetail from '../../components/ItemDetail/ItemDetail'
+import productList from '../../mocks/productList'
 
 
 const ItemDetailContainer = () => {

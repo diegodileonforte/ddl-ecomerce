@@ -1,3 +1,13 @@
-.link{
+.item-link{
     text-decoration: none;
+    color: black;
+}
+
+.item-link :hover{
+    color: black; 
+    text-decoration:none;  
+}
+
+.item-card{
+    margin: 0.5rem;
 }

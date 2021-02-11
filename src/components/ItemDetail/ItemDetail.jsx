@@ -1,32 +1,33 @@
 import React from 'react'
-import Card from 'react-bootstrap/Card'
-import ListGroup from 'react-bootstrap/ListGroup'
-import ListGroupItem from 'react-bootstrap/ListGroupItem'
+import './styles.css'
 import ItemCountComponent from '../ItemCount/ItemCount'
+import { useState } from 'react'
 
 const ItemDetail = ({ productDetail }) => {
 
+    const [addedToCart, setaddedToCart] = useState(false)
+
     const handleAdd = (itemAmount) => {
         console.log(`Se agregarán ${itemAmount} producto/s al carrito.`)
+        setaddedToCart(true)
     }
 
     return (
-        <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src={productDetail.imgUrl} />
-            <Card.Body>
-                <Card.Title>{productDetail.name}</Card.Title>
-                <Card.Text>
-                    {productDetail.description}
-                </Card.Text>
-            </Card.Body>
-            <ListGroup className="list-group-flush">
-                <ListGroupItem>Precio: $ {productDetail.price}</ListGroupItem>
-                <ListGroupItem>Stock: {productDetail.stock}</ListGroupItem>
-            </ListGroup>
-            <Card.Body>
-                <ItemCountComponent initial= {productDetail.initial} stock= {productDetail.stock} onAdd={handleAdd} />
-            </Card.Body>
-        </Card>
+            <div className='card-detail container d-flex flex-wrap justify-content-center align-content-Center'>
+                <div>
+                    <img className='img-fluid' src={productDetail.imgUrl} alt="" />
+                </div>
+                <div className='prod-detail-cont text-center'>
+                    <h2>{productDetail.name}</h2>
+                    <p>{productDetail.description}</p>
+                    <hr />
+                    <p className='fs-5'>Precio: <b>$ {productDetail.price}</b></p>
+                    <p>Stock: {productDetail.stock}</p>
+                    <div>
+                        <ItemCountComponent initial={productDetail.initial} stock={productDetail.stock} onAdd={handleAdd} addedToCart={addedToCart} />
+                    </div>
+                </div>
+            </div>
     )
 }
 

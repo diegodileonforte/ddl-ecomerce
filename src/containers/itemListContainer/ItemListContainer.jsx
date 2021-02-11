@@ -1,11 +1,11 @@
 import './styles.css'
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import productList from '../../mocks/productList'
-import ItemList from '../../components/ItemList/ItemList';
-import { useParams } from 'react-router-dom';
+import ItemList from '../../components/ItemList/ItemList'
+import { useParams } from 'react-router-dom'
 
 
 const ItemListContainer = ({ greeting }) => {
@@ -16,7 +16,7 @@ const ItemListContainer = ({ greeting }) => {
     /* console.log(categoryId) */
 
     useEffect(() => {
-        setloading(true);
+        setloading(true)
         const myPromise = new Promise((resolve, reject) => {
             setTimeout(() => resolve(productList), 1000)
         });
@@ -36,17 +36,6 @@ const ItemListContainer = ({ greeting }) => {
         })
     }, [categoryId]);
 
-    if (loading) {
-        return <Container>
-            <Row>
-                <Col>
-                    <img className='loading-img' src='../../images/loading.svg' alt="" />
-                </Col>
-            </Row>
-
-        </Container>
-    }
-
     return (
         <Container>
             <Row>
@@ -55,8 +44,8 @@ const ItemListContainer = ({ greeting }) => {
                 </Col>
             </Row>
             <Row>
-                <Col>
-                    <ItemList products={products} />
+                <Col className='d-flex justify-content-center'>
+                    {loading ? <img src='../../images/loading.svg' alt="" /> : <ItemList products={products} />}
                 </Col>
             </Row>
         </Container>

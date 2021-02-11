@@ -12,16 +12,16 @@ const App = () => {
     <BrowserRouter>
       <NavBarComponent />
       <Switch>
-        <Route exact path="/">
+        <Route exact path='/'>
           <ItemListContainer greeting={`ESTILO Y UTILIDAD EN 3 DIMENSIONES`} />
         </Route>
-        <Route path="/category/:categoryId">
+        <Route path='/category/:categoryId'>
           <ItemListContainer greeting={`ESTILO Y UTILIDAD EN 3 DIMENSIONES`} />
         </Route>        
-        <Route path="/item/:id">
+        <Route path='/item/:id'>
           <ItemDetailContainer />
         </Route>
-        <Route path="*" children={<div>Not found</div>} />
+        <Route path='*' children={<div>Not found</div>} />
       </Switch>
     </BrowserRouter>
 
