@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 import './styles.css'
 
 const ItemCountComponent = ({ initial, stock, onAdd, addedToCart }) => {
@@ -38,7 +39,7 @@ const ItemCountComponent = ({ initial, stock, onAdd, addedToCart }) => {
 
                 </div>
                 <div className='d-flex justify-content-center m-2'>
-                    {addedToCart ? <Button variant='outline-success' onClick={() => checkOut()} >Terminar compra</Button> : <Button variant='outline-success' onClick={() => onAdd(count)}>Agregar al carrito</Button>}
+                    {addedToCart ? <Link to='/cart'><Button variant='outline-success' onClick={() => checkOut()} >Terminar compra</Button></Link> : <Button variant='outline-success' onClick={() => onAdd(count)}>Agregar al carrito</Button>}
                 </div>
             </div>
         )
