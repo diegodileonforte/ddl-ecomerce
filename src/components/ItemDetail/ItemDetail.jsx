@@ -5,32 +5,34 @@ import { useState } from 'react'
 import { useContext } from 'react'
 import { CartContext } from '../../context/CartContext'
 
-const ItemDetail = ({ productDetail }) => {
+const ItemDetail = ({ product }) => {
 
     const { cart, setCart } = useContext(CartContext)
 
     const [addedToCart, setaddedToCart] = useState(false)
 
     const handleAdd = (itemAmount) => {
-        setCart({ item: productDetail.id, quantity: itemAmount })
+        setCart(...cart, { item: product.id, quantity: itemAmount })
         console.log(`Se agregarán ${itemAmount} producto/s al carrito.`)
         setaddedToCart(true)
         
     }
 
+console.log(cart)
+
     return (
         <div className='card-detail container d-flex flex-wrap justify-content-center align-content-Center'>
             <div>
-                <img className='img-fluid' src={productDetail.imgUrl} alt="" />
+                <img className='img-fluid' src={product.imgUrl} alt="" />
             </div>
             <div className='prod-detail-cont text-center'>
-                <h2>{productDetail.name}</h2>
-                <p>{productDetail.description}</p>
+                <h2>{product.name}</h2>
+                <p>{product.description}</p>
                 <hr />
-                <p className='fs-5'>Precio: <b>$ {productDetail.price}</b></p>
-                <p>Stock: {productDetail.stock}</p>
+                <p className='fs-5'>Precio: <b>$ {product.price}</b></p>
+                <p>Stock: {product.stock}</p>
                 <div>
-                    <ItemCountComponent initial={productDetail.initial} stock={productDetail.stock} onAdd={handleAdd} addedToCart={addedToCart} />
+                    <ItemCountComponent initial={product.initial} stock={product.stock} onAdd={handleAdd} addedToCart={addedToCart} />
                 </div>
             </div>
         </div>

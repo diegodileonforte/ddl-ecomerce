@@ -9,7 +9,7 @@ import productList from '../../mocks/productList'
 const ItemDetailContainer = () => {
 
     const {id} = useParams()
-    const [productDetail, setProductDetail] = useState([])
+    const [product, setProduct] = useState([])
     const [loading, setloading] = useState(false)
 
     useEffect(() => {
@@ -19,7 +19,7 @@ const ItemDetailContainer = () => {
         });
 
         getItem.then((result) => {
-            setProductDetail(result)
+            setProduct(result)
             setloading(false)
         })
     }, [id]);
@@ -32,7 +32,7 @@ const ItemDetailContainer = () => {
 
     return (
         <Container className='d-flex justify-content-center'>
-            {productDetail && <ItemDetail productDetail={productDetail} />}
+            {product && <ItemDetail product={product} />}
         </Container>
     )
 }
