@@ -3,6 +3,7 @@ import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import CartWidgetComponent from '../CartWidget/CartWidget'
 import { Link } from 'react-router-dom'
+import { LinkContainer } from 'react-router-bootstrap'
 
 const NavBarComponent = () => {
     return (
@@ -15,8 +16,8 @@ const NavBarComponent = () => {
                         <Nav className='mr-auto'>
                             <Nav.Link>NOSOTROS</Nav.Link>
                             <NavDropdown title='PRODUCTOS' id='basic-nav-dropdown'>
-                                <NavDropdown.Item href='/category/deco'>DECO</NavDropdown.Item>
-                                <NavDropdown.Item href='/category/gadget'>GADGET</NavDropdown.Item>
+                                <LinkContainer to='/category/deco'><NavDropdown.Item>DECO</NavDropdown.Item></LinkContainer>
+                                <LinkContainer to='/category/gadget'><NavDropdown.Item>GADGET</NavDropdown.Item></LinkContainer>
                             </NavDropdown>
                             <Nav.Link>CONTACTO</Nav.Link>
                         </Nav>
