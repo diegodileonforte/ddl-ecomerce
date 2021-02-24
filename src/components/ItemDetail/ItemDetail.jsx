@@ -13,7 +13,7 @@ const ItemDetail = ({ product }) => {
 
     const handleAdd = (itemAmount) => {
 
-        addItem(product.id, itemAmount)
+        addItem(product, itemAmount)
         setaddedToCart(true)
 
     }
