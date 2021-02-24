@@ -6,9 +6,12 @@ export const CartProvider = ({ children }) => {
 
     const [cart, setCart] = useState([])
 
-    const addItem = (product) => {
-
-        setCart(product)
+    const addItem = (productId, productAmount) => {
+        
+        if (isInCart(productId)) { console.log("Ya está en el carrito") }
+        else {
+            setCart([...cart, { item: productId, quantity: productAmount }])
+        }
     }
 
     const removeItem = (itemId) => {
@@ -28,7 +31,7 @@ export const CartProvider = ({ children }) => {
         setCart([])
     }
 
-    return <CartContext.Provider value={{ cart, setCart, clearCart, addItem, removeItem, isInCart }}>
+    return <CartContext.Provider value={{ cart, setCart, clearCart, addItem, removeItem }}>
         {children}
     </CartContext.Provider>
 }

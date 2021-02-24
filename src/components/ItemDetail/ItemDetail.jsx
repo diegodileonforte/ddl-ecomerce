@@ -7,18 +7,15 @@ import { CartContext } from '../../context/CartContext'
 
 const ItemDetail = ({ product }) => {
 
-    const { cart, addItem, isInCart } = useContext(CartContext)
+    const { cart, addItem } = useContext(CartContext)
 
     const [addedToCart, setaddedToCart] = useState(false)
 
     const handleAdd = (itemAmount) => {
 
-        if (isInCart(product.id)) {
-            console.log("Ya está en el carrito")
-        } else {
-            addItem([...cart, { item: product.id, quantity: itemAmount }])
-            setaddedToCart(true)
-        }
+        addItem(product.id, itemAmount)
+        setaddedToCart(true)
+
     }
 
     console.log(cart)
