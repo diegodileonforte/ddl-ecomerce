@@ -4,9 +4,16 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import CartWidgetComponent from '../CartWidget/CartWidget'
 import { Link } from 'react-router-dom'
 import { LinkContainer } from 'react-router-bootstrap'
+import { useContext } from 'react'
+import { CartContext } from '../../context/CartContext'
 
 const NavBarComponent = () => {
+
+    const { cartBadge } = useContext(CartContext)
+
     return (
+
+        
         <>
             <Navbar bg='danger' variant='dark' expand='sm'>
                 <div className='container d-flex justify-content-between align-items-center'>
@@ -22,7 +29,7 @@ const NavBarComponent = () => {
                             <Nav.Link>CONTACTO</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
-                    <CartWidgetComponent />
+                    {cartBadge() > 0 ? <CartWidgetComponent /> : null}
                 </div>
             </Navbar>
         </>

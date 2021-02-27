@@ -1,4 +1,3 @@
-import './styles.css'
 import React, { useState, useEffect } from 'react'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -13,7 +12,6 @@ const ItemListContainer = ({ greeting }) => {
     const { categoryId } = useParams()
     const [products, setProducts] = useState([])
     const [loading, setloading] = useState(false)
-    /* console.log(categoryId) */
 
     useEffect(() => {
         setloading(true)

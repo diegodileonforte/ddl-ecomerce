@@ -19,10 +19,6 @@ const ItemCountComponent = ({ initial, stock, onAdd, addedToCart }) => {
         }
     }
 
-    const checkOut = () =>{
-        console.log('Se carga CartComponent')
-    }
-
     if (initial === 0) {
         return <div className='container d-flex justify-content-center text-align-center' ><p>Producto sin stock</p></div>
     }
@@ -39,7 +35,7 @@ const ItemCountComponent = ({ initial, stock, onAdd, addedToCart }) => {
 
                 </div>
                 <div className='d-flex justify-content-center m-2'>
-                    {addedToCart ? <Link to='/cart'><Button variant='outline-success' onClick={() => checkOut()} >Terminar compra</Button></Link> : <Button variant='outline-success' onClick={() => onAdd(count)}>Agregar al carrito</Button>}
+                    {addedToCart ? <Link to='/cart'><Button variant='outline-success'>Terminar compra</Button></Link> : <Button variant='outline-success' onClick={() => onAdd(count)}>Agregar al carrito</Button>}
                 </div>
             </div>
         )

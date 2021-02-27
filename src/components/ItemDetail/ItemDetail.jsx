@@ -7,7 +7,7 @@ import { CartContext } from '../../context/CartContext'
 
 const ItemDetail = ({ product }) => {
 
-    const { cart, addItem } = useContext(CartContext)
+    const { addItem } = useContext(CartContext)
 
     const [addedToCart, setaddedToCart] = useState(false)
 
@@ -17,8 +17,6 @@ const ItemDetail = ({ product }) => {
         setaddedToCart(true)
 
     }
-
-    console.log(cart)
 
     return (
         <div className='card-detail container d-flex flex-wrap justify-content-center align-content-Center'>
