@@ -15,7 +15,14 @@ export const CartProvider = ({ children }) => {
     const addItem = (product, productAmount) => {
 
         if (isInCart(product.id)) {
-            console.log("Ya está en el carrito")
+
+            const i = cart.findIndex(prod => prod.item.id === product.id)
+            const newQ = () => {
+                const sum = cart[i].quantity + productAmount
+                cart[i].quantity = sum
+            }
+            newQ()
+            console.log(cart)
         }
         else {
             setCart([...cart, { item: product, quantity: productAmount }])
@@ -51,8 +58,8 @@ export const CartProvider = ({ children }) => {
         return price
     }
 
-    const totalPrice = () =>{
-        let indPrice = cart.map((item) => {return item.item.price * item.quantity})
+    const totalPrice = () => {
+        let indPrice = cart.map((item) => { return item.item.price * item.quantity })
         let sum = indPrice.reduce((acc, q) => acc + q, 0)
         return sum
     }
