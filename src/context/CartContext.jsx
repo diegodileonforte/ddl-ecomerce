@@ -17,12 +17,13 @@ export const CartProvider = ({ children }) => {
         if (isInCart(product.id)) {
 
             const i = cart.findIndex(prod => prod.item.id === product.id)
+            const cartCopy = cart.slice()
             const newQ = () => {
-                const sum = cart[i].quantity + productAmount
-                cart[i].quantity = sum
+                const sum = cartCopy[i].quantity + productAmount
+                cartCopy[i].quantity = sum
+                setCart(cartCopy)                
             }
             newQ()
-            console.log(cart)
         }
         else {
             setCart([...cart, { item: product, quantity: productAmount }])
