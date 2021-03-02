@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import productList from '../../mocks/productList'
 import ItemList from '../../components/ItemList/ItemList'
 import { useParams } from 'react-router-dom'
-
+import { getFirestore } from '../../firebase'
 
 const ItemListContainer = ({ greeting }) => {
 
@@ -15,24 +14,25 @@ const ItemListContainer = ({ greeting }) => {
 
     useEffect(() => {
         setloading(true)
-        const myPromise = new Promise((resolve, reject) => {
-            setTimeout(() => resolve(productList), 1000)
-        });
+        const db = getFirestore();
+        const itemCollection = db.collection("items")
 
-        myPromise.then((result) => {
+        itemCollection.get().then((result) => {
+            const products = result.docs.map(doc => doc.data())
 
             let categoryProducts
 
             if (categoryId !== undefined) {
-                categoryProducts = result.filter(product => product.categoryId === categoryId)
+                categoryProducts = products.filter(product => product.categoryId === categoryId)
             } else {
-                categoryProducts = result
+                categoryProducts = products
             }
 
             setProducts(categoryProducts)
             setloading(false)
         })
-    }, [categoryId]);
+
+    }, [categoryId])
 
     return (
         <Container>

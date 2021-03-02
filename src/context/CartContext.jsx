@@ -21,7 +21,8 @@ export const CartProvider = ({ children }) => {
             const newQ = () => {
                 const sum = cartCopy[i].quantity + productAmount
                 cartCopy[i].quantity = sum
-                setCart(cartCopy)                
+                setCart(cartCopy)
+                localStorage.setItem('cart', JSON.stringify(cartCopy))                
             }
             newQ()
         }

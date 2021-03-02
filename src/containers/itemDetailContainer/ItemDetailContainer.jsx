@@ -3,30 +3,33 @@ import { useState, useEffect } from 'react'
 import { Container } from 'react-bootstrap'
 import { useParams } from 'react-router-dom'
 import ItemDetail from '../../components/ItemDetail/ItemDetail'
-import productList from '../../mocks/productList'
+import { getFirestore } from '../../firebase'
 
 
 const ItemDetailContainer = () => {
 
-    const {id} = useParams()
+    const { id } = useParams()
     const [product, setProduct] = useState([])
     const [loading, setloading] = useState(false)
 
     useEffect(() => {
-        setloading(true);
-        const getItem = new Promise((resolve, reject) => {
-            setTimeout(() => resolve(productList.find(product => product.id.toString() === id)), 1000)
-        });
+        setloading(true)
+        const db = getFirestore();
+        const itemCollection = db.collection("items")
 
-        getItem.then((result) => {
-            setProduct(result)
+        itemCollection.get().then((result) => {
+            const products = result.docs.map(doc => doc.data())
+
+            let productById = products.find(product => product.id.toString() === id)
+
+            setProduct(productById)
             setloading(false)
         })
     }, [id]);
 
     if (loading) {
         return <Container className='d-flex justify-content-center'>
-            <img src='../../images/loading.svg' alt=""/>
+            <img src='../../images/loading.svg' alt="" />
         </Container>
     }
 
