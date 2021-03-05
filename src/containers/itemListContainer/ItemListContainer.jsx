@@ -17,13 +17,21 @@ const ItemListContainer = ({ greeting }) => {
         const db = getFirestore();
         const itemCollection = db.collection("items")
 
-        itemCollection.get().then((result) => {
-            const products = result.docs.map(doc => doc.data())
+        itemCollection.get().then(async (value) => {
+
+            let products = await Promise.all(value.docs.map(async (product) => {
+
+                const categoriesCollection = db.collection('categories');
+
+                let auxCategories = await categoriesCollection.doc(product.data().categoryId).get()
+
+                return { ...product.data(), category: auxCategories.data().name }
+            }))
 
             let categoryProducts
 
             if (categoryId !== undefined) {
-                categoryProducts = products.filter(product => product.categoryId === categoryId)
+                categoryProducts = products.filter(product => product.category === categoryId)
             } else {
                 categoryProducts = products
             }
