@@ -13,25 +13,30 @@ import { getFirestore } from '../../firebase';
 const CartComponent = () => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
+    const [emailConfirmation, setEmailConfirmation] = useState('')
     const [phone, setPhone] = useState('')
     const { cart, clearCart, totalPrice } = useContext(CartContext)
 
     const finalizarCompra = () => {
-        console.log(cart)
-        const newOrder = {
-            buyer: { name: name, emai: email, phone: phone },
-            items: [...cart],
-            date: firebase.firestore.Timestamp.fromDate(new Date()),
-            total: totalPrice()
+
+        if (email === emailConfirmation) {
+            console.log(cart)
+            const newOrder = {
+                buyer: { name: name, emai: email, phone: phone },
+                items: [...cart],
+                date: firebase.firestore.Timestamp.fromDate(new Date()),
+                total: totalPrice()
+            }
+
+            const db = getFirestore()
+            const ordersCollection = db.collection("orders")
+            ordersCollection.add(newOrder).then((value) => {
+                let orderId = value.id
+                alert(`Su orden fue creada correctamente. Id: ${orderId}`)
+            })
+        }else{
+            alert('El email ingresado no coincide con su confirmación. Por favor ingréselo nuevamente.')
         }
-
-        const db = getFirestore()
-        const ordersCollection = db.collection("orders")
-        ordersCollection.add(newOrder).then((value) => {
-            let orderId = value.id
-            return orderId
-        })
-
 
     }
 
@@ -71,6 +76,10 @@ const CartComponent = () => {
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label>Email:</Form.Label>
                         <Form.Control size="sm" type="email" placeholder="ejemplo@gmail.com" onChange={(e) => { setEmail(e.target.value) }} />
+                    </Form.Group>
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Label>Ingrese nuevamente su email:</Form.Label>
+                        <Form.Control size="sm" type="email" placeholder="ejemplo@gmail.com" onChange={(e) => { setEmailConfirmation(e.target.value) }} />
                     </Form.Group>
                     <Form.Group controlId="exampleForm.ControlInput1">
                         <Form.Label>Teléfono:</Form.Label>

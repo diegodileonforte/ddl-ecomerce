@@ -22,7 +22,12 @@ const ItemDetailContainer = () => {
 
             let productById = products.find(product => product.id.toString() === id)
 
-            setProduct(productById)
+            if (productById) {
+                setProduct(productById)
+            }else{
+                alert('Producto no encontrado')
+            }
+
             setloading(false)
         })
     }, [id]);
