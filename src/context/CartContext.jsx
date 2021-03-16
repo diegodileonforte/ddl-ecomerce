@@ -34,7 +34,7 @@ export const CartProvider = ({ children }) => {
 
     const isInCart = (id) => {
 
-        const checkProduct = cart.some(product => product.item.id === id)
+        const checkProduct = cart.some(product => product.id === id)
         return checkProduct
     }
 

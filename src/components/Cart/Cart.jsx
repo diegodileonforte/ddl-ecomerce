@@ -15,7 +15,7 @@ const CartComponent = () => {
     const [email, setEmail] = useState('')
     const [emailConfirmation, setEmailConfirmation] = useState('')
     const [phone, setPhone] = useState('')
-    const { cart, clearCart, totalPrice } = useContext(CartContext)
+    const { cart, setCart, clearCart, totalPrice } = useContext(CartContext)
 
     const finalizarCompra = () => {
 
@@ -33,6 +33,9 @@ const CartComponent = () => {
             ordersCollection.add(newOrder).then((value) => {
                 let orderId = value.id
                 alert(`Su orden fue creada correctamente. Id: ${orderId}`)
+                setCart([])
+                localStorage.clear()
+       
             })
         }else{
             alert('El email ingresado no coincide con su confirmación. Por favor ingréselo nuevamente.')
@@ -88,7 +91,7 @@ const CartComponent = () => {
                 </Form>
 
 
-                <Button variant="success" onClick={() => finalizarCompra()}>Finalizar compra</Button>
+                <Link to='/'><Button variant="success" onClick={() => finalizarCompra()}>Finalizar compra</Button></Link>
             </div>
         </div>
     }

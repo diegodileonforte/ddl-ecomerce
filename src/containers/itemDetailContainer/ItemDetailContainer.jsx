@@ -18,7 +18,7 @@ const ItemDetailContainer = () => {
         const itemCollection = db.collection("items")
 
         itemCollection.get().then((result) => {
-            const products = result.docs.map(doc => doc.data())
+            const products = result.docs.map(doc => ({id: doc.id, ...doc.data()}))
 
             let productById = products.find(product => product.id.toString() === id)
 
