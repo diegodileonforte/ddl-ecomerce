@@ -20,7 +20,7 @@ const CartComponent = () => {
     const finalizarCompra = () => {
 
         if (email === emailConfirmation) {
-            console.log(cart)
+
             const newOrder = {
                 buyer: { name: name, emai: email, phone: phone },
                 items: [...cart],
@@ -35,9 +35,9 @@ const CartComponent = () => {
                 alert(`Su orden fue creada correctamente. Id: ${orderId}`)
                 setCart([])
                 localStorage.clear()
-       
+
             })
-        }else{
+        } else {
             alert('El email ingresado no coincide con su confirmación. Por favor ingréselo nuevamente.')
         }
 
